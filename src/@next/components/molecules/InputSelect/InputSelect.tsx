@@ -15,7 +15,7 @@ export const InputSelect: React.FC<IProps> = ({
   inputProps,
   ...props
 }: IProps) => {
-  const customTheme = React.useContext(ThemeContext);
+  // const customTheme = React.useContext(ThemeContext);
 
   const customStyles = {
     control: (provided: any, state: { menuIsOpen: any }) => ({

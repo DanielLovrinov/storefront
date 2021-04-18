@@ -1,13 +1,12 @@
 import React from "react";
 import { useInView } from "react-intersection-observer";
+// import { Icon } from "@components/atoms";
+import ReactSVG from "react-svg";
 
-import { Icon } from "@components/atoms";
 import { CachedImage } from "@components/molecules";
 
 import * as S from "./styles";
 import { IProps } from "./types";
-
-import ReactSVG from "react-svg";
 
 import expand from "images/expand.svg";
 
@@ -18,7 +17,7 @@ const MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS = 4;
 export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   const [imageIndex, setImageIndex] = React.useState<number>(0);
 
-  const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
+  // const displayButtons = images.length > MINIMAL_NUMBER_OF_IMAGES_FOR_BUTTONS;
 
   React.useEffect(() => {
     if (imageIndex >= images.length) {
@@ -28,11 +27,11 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
 
   const bottomImageRef = React.useRef<HTMLDivElement | null>(null);
   const topImageRef = React.useRef<HTMLDivElement | null>(null);
-  const [topImageIntersectionObserver, topImageInView] = useInView({
+  const [topImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
-  const [bottomImageIntersectionObserver, bottomImageInView] = useInView({
+  const [bottomImageIntersectionObserver] = useInView({
     threshold: 0.5,
   });
 
@@ -64,8 +63,8 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
   };
 
   function browseGallery(i: any) {
-    console.log(images.length);
-    console.log(imageIndex);
+    // console.log(images.length);
+    // console.log(imageIndex);
 
     if (imageIndex + i > images.length - 1) {
       setImageIndex(0);
@@ -114,16 +113,18 @@ export const ProductGallery: React.FC<IProps> = ({ images }: IProps) => {
         {/* )} */}
         {/* {images.length === 0 && <CachedImage />} */}
       </S.Preview>
-      <div className="galleryControls">
-        <button className="arrowLeft" onClick={() => browseGallery(-1)}>
-          {" "}
-          <ReactSVG path={expand} />
-        </button>
-        <button className="arrowRight" onClick={() => browseGallery(1)}>
-          {" "}
-          <ReactSVG path={expand} />
-        </button>
-      </div>
+      {images.length > 1 && (
+        <div className="galleryControls">
+          <button className="arrowLeft" onClick={() => browseGallery(-1)}>
+            {" "}
+            <ReactSVG path={expand} />
+          </button>
+          <button className="arrowRight" onClick={() => browseGallery(1)}>
+            {" "}
+            <ReactSVG path={expand} />
+          </button>
+        </div>
+      )}
     </S.Wrapper>
   );
 };

@@ -5,7 +5,7 @@ import React from "react";
 
 import { defaultTheme } from "@styles";
 
-import { Button } from ".";
+import { Button } from "../Button";
 import * as S from "./styles";
 
 describe("<Button />", () => {

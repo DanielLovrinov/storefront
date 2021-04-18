@@ -4,15 +4,14 @@ import {
   ProductDetails_product_variants,
   ProductDetails_product_variants_pricing,
 } from "@saleor/sdk/lib/queries/gqlTypes/ProductDetails";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import { useIntl } from "react-intl";
 import ReactSVG from "react-svg";
-
-import truckImg from "images/truck.svg";
 
 // import { commonMessages } from "@temp/intl";
 // import { IProductVariantsAttributesSelectedValues } from "@types";
 import { SecondaryButton } from "@components/atoms";
+
 import AddToCartButton from "../../molecules/AddToCartButton";
 import QuantityInput from "../../molecules/QuantityInput";
 // import ProductVariantPicker from "../ProductVariantPicker";
@@ -21,8 +20,10 @@ import {
   getAvailableQuantity,
   getProductPrice,
 } from "./stockHelpers";
-// import * as S from "./styles";
 
+import truckImg from "images/truck.svg";
+
+// import * as S from "./styles";
 import "./scss/index.scss";
 // import { productVariants } from "../ProductVariantPicker/fixtures";
 
@@ -126,7 +127,7 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     setVariantPricing(productVariants[0]?.pricing);
     setVariantStock(productVariants[0]?.quantityAvailable);
 
-    // console.log(productVariants);
+    // getDiscount(variantPricing);
   }, []);
 
   function onVPC(event: any, productVariants: any) {
@@ -138,6 +139,37 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
     setVariantCode(productVariants[sIndex].sku);
     setVariantPricing(productVariants[sIndex]?.pricing);
     setVariantStock(productVariants[sIndex]?.quantityAvailable);
+  }
+
+  let disc: any = 0;
+
+  function getDiscount(variantPricing: any) {
+    // console.log(variantPricing)
+
+    if (variantPricing.onSale) {
+      const initPrice = variantPricing.priceUndiscounted.gross.amount;
+      const newPrice = variantPricing.price.gross.amount;
+
+      disc = ((initPrice - newPrice) / initPrice) * 100;
+
+      disc = Math.round(disc);
+
+      // console.log(disc);
+
+      return disc;
+    }
+  }
+
+  if (variantPricing != null) {
+    disc = getDiscount(variantPricing);
+  }
+
+  if (disc) {
+    const discountTag = document.createElement("div");
+    discountTag.append("-");
+    discountTag.innerHTML += disc;
+    discountTag.innerHTML += "%";
+    document.querySelector(".possDisc").appendChild(discountTag);
   }
 
   let attributeName;
@@ -237,7 +269,6 @@ const AddToCartSection: React.FC<IAddToCartSection> = ({
         Pošaljite nam upit
       </SecondaryButton>
 
-      {/*  */}
       {/* {isOutOfStock ? (
         renderErrorMessage(
           intl.formatMessage(commonMessages.outOfStock),

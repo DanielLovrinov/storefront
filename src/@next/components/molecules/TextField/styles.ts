@@ -4,7 +4,7 @@ export const TextField = styled.div`
   margin-bottom: ${props => props.theme.spacing.fieldSpacer};
   position: relative;
   border: none;
-  border-radius:4px;
+  border-radius: 4px;
 `;
 TextField.displayName = "S.TextField";
 

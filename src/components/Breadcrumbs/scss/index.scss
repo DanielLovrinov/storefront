@@ -3,7 +3,14 @@
 .breadcrumbs {
   display: inline-flex;
   flex-wrap: wrap;
-  margin: $spacer 0;
+  margin: 5px 0;
+  margin-top: 0;
+
+  li:nth-last-child(-n + 2) {
+    display: inline-block;
+  }
+
+  
 
   li {
     &:not(:last-of-type) {
@@ -14,11 +21,16 @@
       }
     }
 
+    @media (max-width: 768px) {
+      display: none;
+    }
+
     a {
-      color: $gray-dark;
+      color: #5c6777;
       text-decoration: none;
       vertical-align: middle;
       transition: 0.3s;
+      font-size: 15px;
 
       &:hover,
       &:focus {
@@ -29,8 +41,8 @@
 
   &__active {
     a {
-      color: $base-font-color;
-      font-weight: $bold-font-weight;
+      color: #000 !important;
+      font-weight: 500;
 
       &:hover {
         color: $base-font-color;

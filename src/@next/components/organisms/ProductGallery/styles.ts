@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (min-width: 769px) {
+  @media (min-width: 992px) {
     flex-direction: column-reverse;
   }
 `;
@@ -16,9 +16,7 @@ export const Thumbnail = styled.div<{ activeThumbnail: boolean }>`
   border-width: 1px;
   border-style: solid;
   border-color: ${props =>
-    props.activeThumbnail === true
-      ? "#D0D9E0"
-      : "transparent"};
+    props.activeThumbnail === true ? "#D0D9E0" : "transparent"};
   justify-content: center;
   height: 140px;
   overflow: hidden;
@@ -56,7 +54,7 @@ export const BottomButton = styled(Button)`
 export const ThumbnailsContainer = styled.div`
   display: none;
 
-  @media (min-width: 769px) {
+  @media (min-width: 992px) {
     display: initial;
   }
 `;
@@ -66,7 +64,6 @@ export const ThumbnailList = styled.div`
   ::-webkit-scrollbar {
     width: 0px;
   }
-  
 
   ul {
     display: flex;
@@ -81,7 +78,7 @@ export const Preview = styled.div`
   max-height: 560px;
   overflow: hidden;
   img {
-    max-height:inherit;
+    max-height: inherit;
     height: 100%;
     width: 100%;
     object-fit: contain;

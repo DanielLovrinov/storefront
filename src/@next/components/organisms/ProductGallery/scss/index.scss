@@ -4,7 +4,7 @@
   justify-content: center;
   top: -28px;
 
-  @media (min-width: 769px) {
+  @media (min-width: 992px) {
     display: none;
   }
 
@@ -14,8 +14,12 @@
     height: 46px;
     background: #000;
     opacity: 0.8;
-    color: white;
+    
     margin: 0 19px;
+
+    svg{
+      color: white;
+    }
   }
 
   .arrowLeft {

@@ -7,7 +7,7 @@ import isEqual from "lodash/isEqual";
 import * as React from "react";
 
 import { TaxedMoney } from "../../containers";
-import * as S from "./styles";
+// import * as S from "./styles";
 
 /**
  * Renders formatted price for chosen variant or product.

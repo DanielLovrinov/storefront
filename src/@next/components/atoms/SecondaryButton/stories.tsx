@@ -1,7 +1,7 @@
 import { storiesOf } from "@storybook/react";
 import React from "react";
 
-import { Button } from ".";
+import { Button } from "../Button";
 
 storiesOf("@components/atoms/Button", module)
   .addParameters({ component: Button })

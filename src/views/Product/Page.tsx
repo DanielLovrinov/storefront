@@ -1,7 +1,7 @@
 import { ProductDetails } from "@saleor/sdk/lib/fragments/gqlTypes/ProductDetails";
 import classNames from "classnames";
-import React, { useEffect } from "react";
-import Media from "react-media";
+import React from "react";
+// import Media from "react-media";
 import { generatePath } from "react-router";
 
 import { ProductDescription } from "@components/molecules";
@@ -16,11 +16,11 @@ import {
   OverlayType,
 } from "../../components";
 import { structuredData } from "../../core/SEO/Product/structuredData";
-import GalleryCarousel from "./GalleryCarousel";
-import OtherProducts from "./Other";
+// import GalleryCarousel from "./GalleryCarousel";
+// import OtherProducts from "./Other";
 import { IProps } from "./types";
 
-import { smallScreen } from "../../globalStyles/scss/variables.scss";
+// import { smallScreen } from "../../globalStyles/scss/variables.scss";
 
 const populateBreadcrumbs = (product: ProductDetails) => [
   {
@@ -45,23 +45,23 @@ const Page: React.FC<
 
   const [variantId, setVariantId] = React.useState("");
 
-  let img = product.images;
+  const img = product.images;
 
-  const getImages = () => {
-    if (product.variants && variantId) {
-      const variant = product.variants.find(
-        variant => variant.id === variantId
-      );
+  // const getImages = () => {
+  //   if (product.variants && variantId) {
+  //     const variant = product.variants.find(
+  //       variant => variant.id === variantId
+  //     );
 
-      if (variant?.images.length > 0) {
-        img = variant.images;
-      }
-    }
+  //     if (variant?.images.length > 0) {
+  //       img = variant.images;
+  //     }
+  //   }
 
-    // return product.images;
-  };
+  //   // return product.images;
+  // };
 
-  console.log(img);
+  // console.log(img);
 
   const handleAddToCart = (variantId, quantity) => {
     add(variantId, quantity);
@@ -90,12 +90,14 @@ const Page: React.FC<
       <div className="container layout-container">
         <Breadcrumbs breadcrumbs={populateBreadcrumbs(product)} />
       </div>
+      <div className="separatorLine" style={{ marginTop: 0 }} />
       <div className="container">
         <div className="product-page__product">
           <script className="structured-data-list" type="application/ld+json">
             {structuredData(product)}
           </script>
           <>
+            <div className="possDisc" />
             <div
               className="product-page__product__gallery"
               ref={productGallery}
@@ -115,7 +117,7 @@ const Page: React.FC<
           <ProductDescription allData={product} />
         </div>
       </div>
-      <OtherProducts products={product.category.products.edges} />
+      {/* <OtherProducts products={product.category.products.edges} /> */}
     </div>
   );
 };

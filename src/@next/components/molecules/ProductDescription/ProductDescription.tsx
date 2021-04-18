@@ -1,6 +1,5 @@
 import React from "react";
 import Collapsible from "react-collapsible";
-
 import ReactSVG from "react-svg";
 
 import expandImg from "images/expand.svg";
