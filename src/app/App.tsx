@@ -36,11 +36,11 @@ const App: React.FC<AppProps> = ({
     <ShopProvider shopConfig={shopConfig}>
       <OverlayProvider pathname={pathname}>
         <MetaConsumer />
-        <div className="HeaderPlaceholder">Header placeholder</div>
+        <div className="HeaderPlaceholder" />
         {/* <MainMenu loading={loading} demoMode={demoMode} menu={mainMenu} /> */}
         {loading ? <Loader fullScreen /> : children}
         {/* <Footer menu={footer} /> */}
-        <div className="FooterPlaceholder">Footer placeholder</div>
+        <div className="FooterPlaceholder" />
         <OverlayManager />
         <Notifications />
       </OverlayProvider>
