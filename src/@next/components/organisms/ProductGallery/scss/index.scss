@@ -1,0 +1,27 @@
+.galleryControls {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  top: -28px;
+
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  button {
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    background: #000;
+    opacity: 0.8;
+    color: white;
+    margin: 0 19px;
+  }
+
+  .arrowLeft {
+    transform: rotate(90deg);
+  }
+  .arrowRight {
+    transform: rotate(-90deg);
+  }
+}
